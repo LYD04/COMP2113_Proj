@@ -1,5 +1,7 @@
 // will change main() to hangman() later
 
+#include "hangman.h"
+
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -130,7 +132,7 @@ bool check_answer(string word, char guessingword[]) {
     return true;
 }
 
-int main() {
+bool hangman() {
     bool guess = false;
     int attempt = 0;
 
@@ -197,12 +199,13 @@ int main() {
     print_guessingword(guessingword, len);
     if (correct) {
         cout << "You've got correct!" << endl;
+        return true;
     } else {
         cout << "failed" << endl;
         cout << "answer is " << word << endl;
     }
 
-    return 0;
+    return false;
 }
 
 // g++ -pedantic-errors -std=c++11 -o Hangman Hangman.cpp
