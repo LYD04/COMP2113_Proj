@@ -1,7 +1,4 @@
-// will change main() to hangman() later
-
 #include "hangman.h"
-
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -9,6 +6,7 @@
 #include <vector>
 using namespace std;
 
+// call a random word from word.txt
 string get_word() {
     string word;
     vector<string> words;
@@ -26,6 +24,7 @@ string get_word() {
     return words[rand() % words.size()];
 }
 
+// initial hangman figure (no hangman only hanger)
 void initial_hangman(char hangman[][6]) {
     // hanger figure
     // first row (_____)
@@ -72,6 +71,7 @@ void initial_hangman(char hangman[][6]) {
     hangman[4][5] = ' ';
 }
 
+// print hangman
 void print_hangman(char hangman[][6]) {
     for (int i = 0; i < 6; ++i) {
         for (int j = 0; j < 6; ++j) {
@@ -81,11 +81,13 @@ void print_hangman(char hangman[][6]) {
     }
 }
 
-void attempt_failure(char hangman[][6], char item, int delete_x, int delete_y) {
+// if failed to guess a letter, add a part of hangman body
+void attempt_failure(char hangman[][6], char item, int add_x, int add_y) {
     // erase a part of body
-    hangman[delete_x][delete_y] = item;
+    hangman[add_x][add_y] = item;
 }
 
+// show hasn't guessed letters
 void print_alphabet(char alphabet[]) {
     cout << "\n";
     for (int i = 0; i < 26; ++i) {
@@ -96,6 +98,7 @@ void print_alphabet(char alphabet[]) {
     }
 }
 
+// check if the player has already tried the letter
 bool find_alphabet(char alphabet[], char letter) {
     for (int i = 0; i < 26; ++i) {
         if (alphabet[i] == letter) {
@@ -105,6 +108,7 @@ bool find_alphabet(char alphabet[], char letter) {
     return false;
 }
 
+// blanks 
 void initialize_guessingword(char guessingword[], int len) {
     for (int i = 0; i < len; ++i) {
         if (i % 2 == 1) {
@@ -115,6 +119,7 @@ void initialize_guessingword(char guessingword[], int len) {
     }
 }
 
+// show correctly guessed letter
 void print_guessingword(char guessingword[], int len) {
     cout << "\n\n";
     for (int i = 0; i < len; ++i) {
@@ -123,6 +128,7 @@ void print_guessingword(char guessingword[], int len) {
     cout << endl;
 }
 
+// check if the player have a whole correct letters
 bool check_answer(string word, char guessingword[]) {
     for (int i = 0; i < word.length(); ++i) {
         if (char(word[i]) != guessingword[i * 2]) {
@@ -132,6 +138,7 @@ bool check_answer(string word, char guessingword[]) {
     return true;
 }
 
+// main function
 bool hangman() {
     bool guess = false;
     int attempt = 0;
@@ -145,7 +152,7 @@ bool hangman() {
     // get a random word
     string word = get_word();
 
-    //
+    // initialize guessing word
     int len = word.length() * 2;
     char *guessingword = new char[len];
     initialize_guessingword(guessingword, len);
@@ -169,17 +176,20 @@ bool hangman() {
 
         // check if the letter is alphabet
         if (int(letter) < 97 || int(letter) > 122) {
-            cout << "This is invalid guess. Input a letter" << endl;
+            //nothing will happen / no reduction in attempts
         } else {
+
             // check if the player has already guessed this letter
             if (not find_alphabet(alphabet, letter)) {
-                cout << " You've already tired this letter (" << letter << "). Try other letters" << endl;
+                //nothing happen / no reduction in attempts
             } else {
+
                 // check if the letter is in the word
                 if (word.find(letter) == -1) {
                     attempt_failure(hangman, bOrder[attempt], aOrder[attempt][0], aOrder[attempt][1]);
                     ++attempt;
                 } else {
+                    // find position of letter and add to guessingword
                     int i = 0;
                     while (word.find(letter, i) != -1 && i < word.length()) {
                         int pos = word.find(letter, i);
@@ -197,15 +207,10 @@ bool hangman() {
     }
     print_hangman(hangman);
     print_guessingword(guessingword, len);
+
     if (correct) {
-        cout << "You've got correct!" << endl;
         return true;
-    } else {
-        cout << "failed" << endl;
-        cout << "answer is " << word << endl;
     }
 
     return false;
 }
-
-// g++ -pedantic-errors -std=c++11 -o Hangman Hangman.cpp
