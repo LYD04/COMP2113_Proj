@@ -1,3 +1,5 @@
+// will change main() to hangman() later
+
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -83,7 +85,7 @@ void attempt_failure(char hangman[][6], char item, int delete_x, int delete_y) {
 }
 
 void print_alphabet(char alphabet[]) {
-    cout << "\n\n";
+    cout << "\n";
     for (int i = 0; i < 26; ++i) {
         cout << alphabet[i] << " ";
         if (i == 12 || i == 25) {
@@ -101,6 +103,33 @@ bool find_alphabet(char alphabet[], char letter) {
     return false;
 }
 
+void initialize_guessingword(char guessingword[], int len) {
+    for (int i = 0; i < len; ++i) {
+        if (i % 2 == 1) {
+            guessingword[i] = ' ';
+        } else {
+            guessingword[i] = '_';
+        }
+    }
+}
+
+void print_guessingword(char guessingword[], int len) {
+    cout << "\n\n";
+    for (int i = 0; i < len; ++i) {
+        cout << guessingword[i];
+    }
+    cout << endl;
+}
+
+bool check_answer(string word, char guessingword[]) {
+    for (int i = 0; i < word.length(); ++i) {
+        if (char(word[i]) != guessingword[i * 2]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main() {
     bool guess = false;
     int attempt = 0;
@@ -114,13 +143,21 @@ int main() {
     // get a random word
     string word = get_word();
 
+    //
+    int len = word.length() * 2;
+    char *guessingword = new char[len];
+    initialize_guessingword(guessingword, len);
+
     // initalize the hangman figure
     char hangman[6][6] = {};
     initial_hangman(hangman);
 
-    while (not guess && attempt < 7) {
+    bool correct = false;
+
+    while (not guess && attempt < 7 && not correct) {
         // print
         print_hangman(hangman);
+        print_guessingword(guessingword, len);
         print_alphabet(alphabet);
 
         // get a guess letter from the player
@@ -140,14 +177,30 @@ int main() {
                 if (word.find(letter) == -1) {
                     attempt_failure(hangman, bOrder[attempt], aOrder[attempt][0], aOrder[attempt][1]);
                     ++attempt;
+                } else {
+                    int i = 0;
+                    while (word.find(letter, i) != -1 && i < word.length()) {
+                        int pos = word.find(letter, i);
+                        guessingword[pos * 2] = letter;
+                        i = pos + 1;
+                    }
                 }
 
                 alphabet[int(letter) - 97] = ' ';
+
+                // check if the player got correct answer and update the status
+                correct = check_answer(word, guessingword);
             }
         }
     }
-
     print_hangman(hangman);
+    print_guessingword(guessingword, len);
+    if (correct) {
+        cout << "You've got correct!" << endl;
+    } else {
+        cout << "failed" << endl;
+        cout << "answer is " << word << endl;
+    }
 
     return 0;
 }
