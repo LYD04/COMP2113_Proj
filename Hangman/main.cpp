@@ -17,3 +17,4 @@ int main() {
 // g++ -pedantic-errors -std=c++11 -c hangman.cpp
 // g++ -pedantic-errors -std=c++11 -c main.cpp
 // g++ -pedantic-errors -std=c++11 hangman.o main.o -o Hangman
+// rm -f Hangman main.o hangman.o

@@ -8,6 +8,7 @@
 using namespace std;
 
 // call a random word from word.txt
+// no input parameters
 string getWord() {
     string word;
     vector<string> words;
@@ -22,11 +23,13 @@ string getWord() {
 
     srand((unsigned)time(NULL));
 
-    // only get a random word
+    // get a random index and return a word of the index position
     return words[rand() % words.size()];
 }
 
 // initial hangman figure (no hangman only hanger)
+// input: an empty 2D array
+// no return value
 void initialHangman(char hangman[][6]) {
     // hanger figure
     // first row (_____)
@@ -79,6 +82,8 @@ void initialHangman(char hangman[][6]) {
 }
 
 // print hangman
+// input: 2D array of hangman
+// no return value
 void printHangman(char hangman[][6]) {
     for (int i = 0; i < 6; ++i) {
         for (int j = 0; j < 6; ++j) {
@@ -89,12 +94,16 @@ void printHangman(char hangman[][6]) {
 }
 
 // if failed to guess a letter, add a part of hangman body
+// input: hangman 2D array, an item (part of body) that will be added, row (X) and column (y) index where to add item
+// no return values, change an element of hangman[x][y] (act as pass by reference)
 void attemptFailure(char hangman[][6], char item, int add_x, int add_y) {
     // erase a part of body
     hangman[add_x][add_y] = item;
 }
 
-// show hasn't guessed letters
+// show letter that hasn't been guessed yet
+// input 1D array of alphabet
+// no return value, output elements in the alphabet array
 void printAlphabet(char alphabet[]) {
     cout << "\n";
     for (int i = 0; i < 26; ++i) {
@@ -106,6 +115,8 @@ void printAlphabet(char alphabet[]) {
 }
 
 // check if the player has already tried the letter
+// input: alphabet array, letter that the player tried this turn
+// return true if the player hasn't tried before and return false if the player had tried
 bool findAlphabet(char alphabet[], char letter) {
     for (int i = 0; i < 26; ++i) {
         if (alphabet[i] == letter) {
@@ -115,7 +126,9 @@ bool findAlphabet(char alphabet[], char letter) {
     return false;
 }
 
-// blanks
+// initializing guessing_word array
+// input 1D array of gussing word and length of the array
+// no return value
 void initializeGuessingword(char guessed_word[], int len) {
     for (int i = 0; i < len; ++i) {
         if (i % 2 == 1) {
@@ -127,6 +140,8 @@ void initializeGuessingword(char guessed_word[], int len) {
 }
 
 // show correctly guessed letter
+// input 1D array of gussing word and length of the array
+// no return value, output elements of guessing_word in two rows
 void printGuessingword(char guessed_word[], int len) {
     cout << "\n\n";
     for (int i = 0; i < len; ++i) {
@@ -136,6 +151,8 @@ void printGuessingword(char guessed_word[], int len) {
 }
 
 // check if the player have a whole correct letters
+// input the word has to be guessed and a guessed word by the player
+// return true if the player guessed a whole word correctly otherwise return false
 bool checkAnswer(string word, char guessed_word[]) {
     for (int i = 0; i < word.length(); ++i) {
         if (char(word[i]) != guessed_word[i * 2]) {
@@ -146,6 +163,7 @@ bool checkAnswer(string word, char guessed_word[]) {
 }
 
 // main function
+// return true if the player win or return false
 bool hangman() {
     bool guess = false;
     int attempt = 0;
@@ -187,7 +205,7 @@ bool hangman() {
         } else {
             // check if the player has already guessed this letter
             if (not findAlphabet(alphabet, letter)) {
-                // nothing happen / no reduction in attempts
+                // nothing happen & no reduction in attempts
             } else {
                 // check if the letter is in the word
                 if (word.find(letter) == -1) {
@@ -216,6 +234,7 @@ bool hangman() {
     if (correct) {
         return true;
     } else {
+        // show correct answer if the player couldn't get the word right
         cout << "Answer: " << word << endl;
     }
 
