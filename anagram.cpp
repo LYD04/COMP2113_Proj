@@ -7,20 +7,6 @@
 #include <random>
 #include <chrono>
 #include <cctype>
-/* 
-This anagram game presents the user with a riddle. 
-The user is given 3 tries to get the correct answer.
-If the user gets the correct answer within 3 trials, 
-they win this part of the game and are awarded with a hostage.
-However, if they fail to guess the correct answer, they lose the hostage.
-
-The game starts with an opening sentence, congratulating the user for making it this far. 
-Then it proceeds onto presenting them with a riddle. 
-The user then tries to guess the answer by inputting what they think would be the right answer.
-This goes on for 3 times until they have guessed the correct answer. 
-Once that is done, if the user managed to get the right answer, they are congratulated
-while if they fail to get the correct answer, they are presented with a dissapointing message.
-*/
 
 bool anagram()
 {
