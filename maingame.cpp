@@ -17,6 +17,14 @@ void styledisp(string text) {
     cout << endl;
 }
 
+void styledisp2(string text) { //this function outputs stylised text faster, for the graphic at the end
+    for (char c : text) {
+        cout << c << flush;
+        this_thread::sleep_for(chrono::milliseconds(25));
+        }
+    cout << endl;
+}
+
 int main() {
 	cout << "************************************************** GOTHAM **************************************************" << endl;
 	cout << " " << endl;
@@ -263,21 +271,21 @@ int main() {
 	cout << "\033[0m";
 	cout << "" << endl;
 	cout << "\033[32m";
-	styledisp(" |||||||||||||||||||");
-	styledisp(" |                 |");
-	styledisp(" |       ***       |");
-	styledisp(" |    **    **     |");
-	styledisp(" |   **       **   |");
-	styledisp(" |           **    |");
-	styledisp(" |          **     |");
-	styledisp(" |         **      |");
-	styledisp(" |         **      |");
-	styledisp(" |         **      |");
-	styledisp(" |                 |");
-	styledisp(" |         **      |");
-	styledisp(" |         **      |");
-	styledisp(" |                 |");
-	styledisp(" |||||||||||||||||||");
+	styledisp2(" |||||||||||||||||||");
+	styledisp2(" |                 |");
+	styledisp2(" |       ***       |");
+	styledisp2(" |    **    **     |");
+	styledisp2(" |   **       **   |");
+	styledisp2(" |           **    |");
+	styledisp2(" |          **     |");
+	styledisp2(" |         **      |");
+	styledisp2(" |         **      |");
+	styledisp2(" |         **      |");
+	styledisp2(" |                 |");
+	styledisp2(" |         **      |");
+	styledisp2(" |         **      |");
+	styledisp2(" |                 |");
+	styledisp2(" |||||||||||||||||||");
 	cout << "\033[0m";
 	cout << "" << endl;
 	return 0;
