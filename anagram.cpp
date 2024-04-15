@@ -9,7 +9,7 @@
 
 using namespace std;
 
-bool playAnagramGame()
+bool anagram()
 {
     cout << "Ah, you've proven yourself worthy. Well, we meet again. Until then, solve the anagram below." << endl;
 
