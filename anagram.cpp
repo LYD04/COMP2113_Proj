@@ -71,3 +71,4 @@ bool playAnagramGame()
 
     cout << "Ah, the Dark Knight fails, yet again." << endl;
     return false;
+}
