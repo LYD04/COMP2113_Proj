@@ -49,7 +49,7 @@ int main() {
 	cout << "Reporter: ";
 	styledisp("Now coming in, Gotham city is on the brink of collapse, once again.");
 	cout << "          ";
-	styledisp("We have received reports of four key city personnel missing since last night.");
+	styledisp("We have received reports of three key city personnel missing since last night.");
 	cout << "          ";
 	styledisp("Those reported missing are Mayor Anthony Garcia, DA Carl Finch and Commissioner Andrew Howe.");
 	cout << "          ";
@@ -198,7 +198,7 @@ int main() {
 		styledisp("Shocking news coming in...The city's DA has been found dead at the City Railway office. The police are ...");
 	}
 	cout << "" << endl;
-
+	//player is allowed to play the 4th game only if he/she wins the first three
 	if (hangman_result == 1 && riddle_result == 1 && cursednum_result == 1) {
 		//Day 4 Anagram
 		this_thread::sleep_for(chrono::seconds(3));
@@ -271,6 +271,7 @@ int main() {
 	cout << "\033[0m";
 	cout << "" << endl;
 	cout << "\033[32m";
+	//graphic: riddler logo
 	styledisp2(" |||||||||||||||||||");
 	styledisp2(" |                 |");
 	styledisp2(" |       ***       |");
