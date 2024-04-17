@@ -36,6 +36,7 @@ int main() {
 	cout << "BATMAN." << endl;
 	this_thread::sleep_for(chrono::seconds(2));
 	cout << "Batman: ";
+	cout << "\033[36m";
 	styledisp("The city needs me.");
 	cout << "        ";
 	styledisp("The deception of the day masks the darkness of the nights.");
@@ -43,6 +44,7 @@ int main() {
 	styledisp("But I see it. From the shadows. There is a lot to be done.");
 	cout << "        ";
 	styledisp("I still have hope. There will be change.");
+	cout << "\033[0m";
 	this_thread::sleep_for(chrono::seconds(2));
 	cout << "The TV crackles." << endl;
 	this_thread::sleep_for(chrono::seconds(3));
