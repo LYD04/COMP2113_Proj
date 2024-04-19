@@ -11,7 +11,6 @@ using namespace std;
 
 bool anagram()
 {
-    cout << "Ah, you've proven yourself worthy. Well, we meet again. Until then, solve the anagram below." << endl;
 
     // Open the file containing the words
     ifstream file("anagram_words.txt");
@@ -68,7 +67,5 @@ bool anagram()
             chances++;
         }
     }
-
-    cout << "Ah, the Dark Knight fails, yet again." << endl;
     return false;
 }
