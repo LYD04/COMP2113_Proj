@@ -8,7 +8,7 @@
 using namespace std;
 
 bool riddle() {
-    string userAnswer;
+    string user_answer;
     int line; // Declare line variable
 
     srand(time(nullptr));
@@ -34,13 +34,13 @@ bool riddle() {
     getline(inputFile, answer); // Read the line immediately following 'string a'
 
     cout << "Please type an answer(answer is in one word): "<<endl;
-    cin >> userAnswer;
+    cin >> user_answer;
 
-    transform(userAnswer.begin(), userAnswer.end(), userAnswer.begin(), ::tolower); // Convert user input to lowercase
+    transform(user_answer.begin(), user_answer.end(), user_answer.begin(), ::tolower); // Convert user input to lowercase
     transform(answer.begin(), answer.end(), answer.begin(), ::tolower); // Convert answer to lowercase
 
 
-    if (answer == userAnswer) {
+    if (answer == user_answer) {
         cout << "CORRECT!" << endl;
         return true;
     } else {
