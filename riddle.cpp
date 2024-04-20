@@ -1,6 +1,7 @@
 #include "riddle.h"
 
 #include <iostream>
+#include <algorithm>
 #include <fstream>
 #include <string>
 #include <ctime> // Include for seeding random number generator
