@@ -26,7 +26,7 @@ void styledisp2(string text) { //this function outputs stylised text faster, for
 }
 
 int main() {
-	cout << "************************************************** GOTHAM **************************************************" << endl;
+	cout << "******************************************** GOTHAM'S GUARDIAN ********************************************" << endl;
 	cout << " " << endl;
 	this_thread::sleep_for(chrono::seconds(3)); //this function has been used often in order to create a mor game-like suspense
 
