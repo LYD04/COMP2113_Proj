@@ -1,6 +1,5 @@
 # COMP2113_Proj
 
-
 List of Non-standard C/C++ libraries used:
 Main:
 thread: This library creates and manages threads in the code. It is used in the functions styledisp and styledisp2 to introduce delays between character outputs.
