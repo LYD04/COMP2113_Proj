@@ -1,9 +1,10 @@
-#include "cursednum.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include <cctype>
 #include <string>
+#include "cursednum.h"
+#include <thread>
 using namespace std;
 
 //To check if the choice of the player is out of range(lb,ub)
@@ -35,11 +36,13 @@ bool cursednum() {
     int curnum = rand()%101;          //Generating the cursed number  
     while(call!=curnum){
         if(turn==-1){
+            this_thread::sleep_for(chrono::seconds(1));
             cout<<"*****IT'S YOUR TURN. PLEASE INPUT A NUMBER BETWEEN "<<lb<<" AND "<<ub<<"*****"<<endl;
             cin>>call;
             validnum(call,lb,ub);
             turn*=-1;
         }else if(turn==1){
+            this_thread::sleep_for(chrono::seconds(1));
             cout<<"*****IT'S YOUR TURN, Riddler. PLEASE INPUT A NUMBER BETWEEN "<<lb<<" AND "<<ub<<"*****"<<endl;
             call = lb+rand()%(ub-lb+1); //The antagonist picks a number randomly from the new boundary 
 	    cout << "\033[32m";
