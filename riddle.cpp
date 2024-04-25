@@ -8,8 +8,11 @@
 
 using namespace std;
 
+//Function to generate a random number, read a random line on the text file, and print out a random question
+//Input: string (user input as answer)
+//Output: boolean (return True when the user got the answer, otherwise False)
 bool riddle() {
-    string user_answer;
+    string user_answer; 
     int line; // Declare line variable
 
     srand(time(nullptr));
@@ -18,6 +21,7 @@ bool riddle() {
         line = rand()%30 + 1; // Generate a new random number
     } while (line % 2 == 0); // Keep generating until line is odd
 
+    //if there is no "riddle.txt" available, print out error message
     ifstream inputFile("riddle.txt");
     if (!inputFile) {
         cout << "Error opening file." << endl;
@@ -40,7 +44,7 @@ bool riddle() {
     transform(user_answer.begin(), user_answer.end(), user_answer.begin(), ::tolower); // Convert user input to lowercase
     transform(answer.begin(), answer.end(), answer.begin(), ::tolower); // Convert answer to lowercase
 
-
+    //check if the user got the answer, print out correct or incorrect message accordingly
     if (answer == user_answer) {
         cout << "CORRECT!" << endl;
         return true;
