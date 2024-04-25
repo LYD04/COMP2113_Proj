@@ -100,7 +100,7 @@ int main() {
 	//play hangman
 	bool hangman_result = hangman();
 	cout << "" << endl;
-	result.push_back(hangman_result);
+	results.push_back(hangman_result);
 	if (hangman_result == true) {
 		cout << "Riddler: ";
 		cout << "\033[32m";
