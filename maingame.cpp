@@ -8,6 +8,9 @@
 #include <thread>
 #include <chrono>
 #include <iomanip>
+#include <string>
+#include <algorithm>
+#include <cctype>
 using namespace std;
 
 //this function print the text in a graphic game style format
@@ -200,7 +203,7 @@ int main() {
 		cout << "\033[32m";
 		styledisp("The Batman fails...once again.");
 		cout << "         ";
-		styledisp("I really expexted more from you. Now the DA has to pay for your mistakes.");
+		styledisp("I really expected more from you. Now the DA has to pay for your mistakes.");
 		cout << "\033[0m";
 		cout << "Reporter: ";
 		styledisp("Shocking news coming in...The city's DA has been found dead at the City Railway office. The police are ...");
@@ -267,7 +270,8 @@ int main() {
 	string ans;
 	cin >> ans;
 	cout << endl;
-	if (ans == "Darkness" || ans == "darkness") {
+	transform(ans.begin(),ans.end(),ans.begin(),::tolower);
+	if (ans == "darkness") {
 		cout << "Riddler: ";
 		cout << "\033[32m";
 		styledisp("Impressive...Until we meet again!");
