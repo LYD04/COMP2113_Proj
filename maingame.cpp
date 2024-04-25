@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <fstream>
 #include "riddle.h"
 #include "anagram.h"
 #include "cursednum.h"
@@ -79,7 +81,7 @@ int main() {
 	cout << "" << endl;
 	cout << "" << endl;
 	this_thread::sleep_for(chrono::seconds(3));
-
+	vector<bool> results;
 	//day 1 hangman
 	styledisp("*** DAY 1 ***");
 	cout << "" << endl;
@@ -98,6 +100,7 @@ int main() {
 	//play hangman
 	bool hangman_result = hangman();
 	cout << "" << endl;
+	result.push_back(hangman_result);
 	if (hangman_result == true) {
 		cout << "Riddler: ";
 		cout << "\033[32m";
@@ -134,6 +137,8 @@ int main() {
 	
 	//play riddle
 	bool riddle_result = riddle();
+	cout << endl;
+	results.push_back(riddle_result);
 	if (riddle_result == true) {
 		cout << "Riddler: ";
 		cout << "\033[32m";
@@ -178,6 +183,7 @@ int main() {
 
 	//play cursed_num
 	bool cursednum_result = cursednum();
+	results.push_back(cursednum_result);
 	if (cursednum_result == true) {
 		cout << "Riddler: ";
 		cout << "\033[32m";
@@ -220,6 +226,7 @@ int main() {
 		
 		//play anagram game
 		bool anagram_result = anagram();
+		results.push_back(anagram_result);
 		cout << endl;
 		if (anagram_result = true) {
 			
@@ -291,6 +298,21 @@ int main() {
 	styledisp2(" |||||||||||||||||||");
 	cout << "\033[0m";
 	cout << "" << endl;
+	
+	//saving work progress
+        int wins = 0;
+        int losses = 0;
+        for (int i = 0; i < results.size();i++) {
+                if (results[i] == false)  {
+                        losses ++;
+                }
+                else
+                        wins ++;
+        }
+        ofstream fout;
+        fout.open("Game_history.txt", ios::app);
+        fout << "** " << wins << " wins, " << losses << " losses **" << endl;
+        fout.close();
 	return 0;
 }
 
