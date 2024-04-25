@@ -25,12 +25,6 @@ void modifybound(int curnum, int call, int& lb,int& ub){
     }
 }
 
-bool isprime(int num){
-    bool prime = false;
-    for( int i=1 ; i<=num ; ++i){
-        prime*=-1;
-    }
-}
 
 //To provide information for the player in the middle of the game and affect the player's decision-making
 void hint(int curnum,int hintnumber, bool real){
