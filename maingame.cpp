@@ -125,24 +125,24 @@ int main() {
 	cout << "" << endl;
 	this_thread::sleep_for(chrono::seconds(3));
 
-	//Day 2 Riddle
+	//Day 2 Anagram
 	styledisp("*** Day 2 ***");
 	cout << "" << endl;
 
 	//game description
 	cout << "Riddler: ";
 	cout << "\033[32m";
-	styledisp("I have added a bit of a personal touch this time, Batman.");
+	styledisp("We have seen how you perform with hangman, Batman. Let's see how good you are at decoding anagrams.");
 	cout << "         ";
-	styledisp("I have some \"easy\" riddles for you, which I am sure, you can solve in a snap. RIDDLE AWAY, BATMAN!");
+	styledisp("I have some \"easy\" anagrams for you, which I am sure, you can solve in a snap. GRIND ON, BATMAN!");
 	cout << "\033[0m";
 	cout << "" << endl;
 	
-	//play riddle
-	bool riddle_result = riddle();
+	//play anagram
+	bool anagram_result = anagram();
 	cout << endl;
-	results.push_back(riddle_result);
-	if (riddle_result == true) {
+	results.push_back(anagram_result);
+	if (anagram_result == true) {
 		cout << "Riddler: ";
 		cout << "\033[32m";
 		styledisp("Looks like you have come prepared this time... Well, I will release the next hostage.");
@@ -170,6 +170,8 @@ int main() {
 	// Day 3 Cursed num
 	styledisp("*** Day 3 ***");
 	cout << "" << endl;
+	
+	//
 	cout << "Riddler: ";
 	cout << "\033[32m";
 	styledisp("My next challenge for you is the Gambit of Gloom.");
@@ -210,7 +212,7 @@ int main() {
 	}
 	cout << "" << endl;
 	//player is allowed to play the 4th game only if he/she wins the first three
-	if (hangman_result == 1 && riddle_result == 1 && cursednum_result == 1) {
+	if (hangman_result == 1 && anagram_result == 1 && cursednum_result == 1) {
 		//Day 4 Anagram
 		this_thread::sleep_for(chrono::seconds(3));
 		styledisp("*** Day 4 ***");
@@ -223,15 +225,15 @@ int main() {
 		cout << "         ";
 		styledisp("Play my final challenge, and maybe you can save her...");
 		cout << "         ";
-		styledisp("Since you have proved your skill in puzzles, solve these anagrams for me.");
+		styledisp("I have added a personal touch for this final game. You guessed it correct! RIDDLES!");
 		cout << "" << endl;
 		cout << "\033[0m";
 		
-		//play anagram game
-		bool anagram_result = anagram();
-		results.push_back(anagram_result);
+		//play riddle
+		bool riddle_result = riddle();
+		results.push_back(riddle_result);
 		cout << endl;
-		if (anagram_result = true) {
+		if (riddle_result = true) {
 			
 			cout << "Riddler: ";
 			cout << "\033[32m";
