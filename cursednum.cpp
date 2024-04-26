@@ -163,7 +163,7 @@ bool cursednum() {
             cout<<"*****IT'S YOUR TURN, Riddler. PLEASE INPUT A NUMBER BETWEEN "<<lb<<" AND "<<ub<<"*****"<<endl;
             call = lb+rand()%(ub-lb+1); //The antagonist picks a number randomly from the new boundary 
             this_thread::sleep_for(chrono::seconds(1));
-            cout<<"DA: ";
+            cout<<"Riddler: ";
 	        cout << "\033[32m";
             cout<<"I picked "<<call<<"."<<endl;
 	        cout << "\033[0m";
