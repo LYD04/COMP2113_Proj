@@ -5,6 +5,8 @@
 - [Game Intro](#tab-2)
 - [Key Features](#tab-3)
 - [Coding Features](#tab-4)
+- [List of Non-standard C/C++ libraries used](#tab-5)
+- [Compilation and Execution Instructions](#tab-6)
   
 ## Team members:
 1.	CHUNG SIU HO, Neil 3035921851
@@ -84,6 +86,7 @@ thread: This library creates and manages threads in the code. It is used in the 
 chrono: This library measures and manipulates time durations. It is used in the functions stypedisp and styledisp2 to control the timing of the character outputs.
 
 
+
 **Anagram:**
 stream: This library provides functionalities for file input and output. It is used to open and read from a file named "anagram_words.txt" in the function anagram(). 
 
@@ -96,6 +99,7 @@ algorithm: This library provides various algorithms for manipulating sequences, 
 random: This library provides functionalities for generating pseudo-random numbers. It is used to seed the random number generator (default_randon_engine) and to generate a random index for choosing a word from the vector of words.
 
 chrono: This library is used to measure and manipulate time durations. It is used to seed the random number generator based on the current system clock time in the function anagram().
+
 
 
 **Cursedum:**
@@ -129,5 +133,5 @@ ctime: This library provides functions to work with time and date. It is used to
 
 
 
-Compilation and execution instructions:
+## Compilation and execution instructions:
 
