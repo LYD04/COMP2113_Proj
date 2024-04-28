@@ -137,4 +137,6 @@ The player need to rearrange the letter into a word.
 1. To compile the game, the player has to "make game" and "./game".
 2. The user then has to follow the instructions presented as the game proceeds.
 3. Once the game ends, if the player wishes to check their game record, they can "cat Game_history.txt", which will present their game record.
+4. Once that is done, the player can "make clean" which removes the .o files and the game. However, their data is preserved in Game_history.txt.
+5. Finally, if the player wishes to play the game again, they can repeat the steps.
 
