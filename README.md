@@ -29,11 +29,12 @@ There is a wide range of text-based games included, such as Hangman, Cursed Numb
 
 ## Coding Features
 **maingame.cpp**  
-Set the background  
+Sets the background  
 
 	The style of printing (computer typing) and a little pause in between the dialogues make the game more engaging and mysterious  
 	The colours of the dialogues from Batman and Riddler are light blue and green respectively. This helps catch the player’s attention to the instruction  
 	Program codes in multiple files (all other header and C++ source files) 
+	Records all wins and losses of successive gameplays (dynamic memory management)
 <br>
 <br>
 <br>
@@ -134,9 +135,10 @@ The player need to rearrange the letter into a word.
 
 
 ## Compilation and execution instructions:
-1. To compile the game, the player has to "make game" and "./game".
+1. The player has to key in "make game", which compiles all member files and creates the game on the player's PC. Typing in "./game" starts the play.
 2. The user then has to follow the instructions presented as the game proceeds.
-3. Once the game ends, if the player wishes to check their game record, they can "cat Game_history.txt", which will present their game record.
-4. Once that is done, the player can "make clean" which removes the .o files and the game. However, their data is preserved in Game_history.txt.
+3. Once the game ends, if the player wishes to check their game record, they can key in "make view", which will present their historical game record.
+4. As the player comepletes the game and wishes to free up space, the player can type in "make clean" which removes the object files and the game. However, their gameplay record is preserved and can be viewed any time by keying in make view.
 5. Finally, if the player wishes to play the game again, they can repeat the steps.
+6. In order to delete past records, player can type in "make free".
 
